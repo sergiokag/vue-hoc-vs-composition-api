@@ -1,4 +1,4 @@
-import { useCounter } from "../../utils/useCounter";
+import { useCounter } from "../../src/utils/useCounter";
 
 describe('userCounter', () => {
     it('tests increment works', () => {
