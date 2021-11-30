@@ -3,25 +3,29 @@
     <h1>{{ title }}</h1>
     <div class="button-container">
       <div class="grid-item">
-        <CounterPlusOne></CounterPlusOne>
-      </div>
-      <div class="grid-item">
-        <CounterPlusTwo></CounterPlusTwo>
+        <CounterPlus></CounterPlus>
       </div>
     </div>
   </main>
 </template>
 
 <script>
+// components
+import Counter from "../components/Counter";
+
+// hoc
 import { WithCounter } from "../utils/withCounter";
-import CounterPlusOne from "./CounterPlusOne";
-import CounterPlusTwo from "./CounterPlusTwo";
+import { WithMultiplication } from "../utils/withMultiplication";
+
+const compose =
+  (...funcs) =>
+  (a) =>
+    funcs.reduceRight((result, func) => func(result), a);
 
 export default {
   name: "Home",
   components: {
-    CounterPlusOne: WithCounter(CounterPlusOne),
-    CounterPlusTwo,
+    CounterPlus: compose(WithMultiplication(4), WithCounter(2))(Counter),
   },
   setup() {
     return {
@@ -42,6 +46,6 @@ a {
 
 .button-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 </style>

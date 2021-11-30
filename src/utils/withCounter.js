@@ -1,6 +1,6 @@
 import { h } from 'vue';
 
-export const WithCounter = (WrappedComponent, number = 1) => {
+export const WithCounter = (number = 1) => (WrappedComponent) => {
     return {
         data: () => ({
             counter: 0,
@@ -14,6 +14,7 @@ export const WithCounter = (WrappedComponent, number = 1) => {
 
         render() {
             return h(WrappedComponent, {
+                ...WrappedComponent.props,
                 counter: this.counter,
                 increment: this.increment
             })
