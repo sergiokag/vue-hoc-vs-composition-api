@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Counter from "../../src/components/Counter";
-import { WithCounter } from "../../src/utils/withCounter";
+import { WithCounter } from "../../src/models/counter/withCounter";
 
 describe('withCounter', () => {
     it('tests that withCounter works', () => {

@@ -1,13 +1,14 @@
-import { useCounter } from "../../src/utils/useCounter";
+import useCounter from "../../src/models/counter/useCounter";
 
 describe('userCounter', () => {
     it('tests increment works', () => {
         // Arrange
-        const { counter, increment } = useCounter(2);
+        const { counterValue, increaseCounterValue } = useCounter();
         // Act
-        increment();
-        increment();
+        increaseCounterValue(2);
+        increaseCounterValue(2);
         // Assert
-        expect(counter.value).toBe(4);
+        // TODO: need to mock store
+        expect(counterValue.value).toBe(4);
     })
 });
